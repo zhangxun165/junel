@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class Test1 {
     /**
-     * 题目：设计一个类，我们只能生成该类的一个实例，即实现一个单例模式
+     * 题目要求：设计一个类，我们只能生成该类的一个实例，即实现一个单例模式
      */
 
     @Test
@@ -23,7 +23,7 @@ public class Test1 {
      * 多线程调试，各自打印的对象内存地址应该是相同的
      */
     @Test
-    public void testMySun1InMultiThread(){
+    public void testMySun1InMultiThread() throws InterruptedException {
         Thread thread1 = new Thread(() -> {
             MySun1 sun = MySun1.getSun();
             System.out.println(sun);
@@ -36,6 +36,8 @@ public class Test1 {
 
         thread1.start();
         thread2.start();
+        // 等待子线程执行完毕
+        Thread.sleep(1000);
     }
 
     @Test
@@ -51,7 +53,7 @@ public class Test1 {
      * Tips:如果多次尝试都未获得预期结果，可以尝试使用多线程断点调试
      */
     @Test
-    public void testMySun2InMultiThread(){
+    public void testMySun2InMultiThread() throws InterruptedException {
         Thread thread1 = new Thread(() -> {
             MySun2 sun = MySun2.getSun();
             System.out.println(sun);
@@ -64,6 +66,8 @@ public class Test1 {
 
         thread1.start();
         thread2.start();
+        // 等待子线程执行完毕
+        Thread.sleep(1000);
     }
 
     @Test
@@ -76,7 +80,7 @@ public class Test1 {
      * 多线程调试，各自打印的对象内存地址应该是相同的
      */
     @Test
-    public void testMySun3InMultiThread(){
+    public void testMySun3InMultiThread() throws InterruptedException {
         Thread thread1 = new Thread(() -> {
             MySun3 sun = MySun3.getSun();
             System.out.println(sun);
@@ -89,6 +93,8 @@ public class Test1 {
 
         thread1.start();
         thread2.start();
+        // 等待子线程执行完毕
+        Thread.sleep(1000);
     }
 
     @Test
@@ -101,7 +107,7 @@ public class Test1 {
      * 多线程调试，各自打印的对象内存地址应该是相同的
      */
     @Test
-    public void testMySun4InMultiThread(){
+    public void testMySun4InMultiThread() throws InterruptedException {
         Thread thread1 = new Thread(() -> {
             MySun4 sun = MySun4.getSun();
             System.out.println(sun);
@@ -114,6 +120,56 @@ public class Test1 {
 
         thread1.start();
         thread2.start();
+        // 等待子线程执行完毕
+        Thread.sleep(1000);
+    }
+
+    @Test
+    public void testMySun5InSingleThread(){
+        MySun5 sun = MySun5.getSun();
+        assertThat(sun).isNotNull();
+    }
+
+    /**
+     * 多线程调试，各自打印的对象内存地址应该是相同的
+     */
+    @Test
+    public void testMySun5InMultiThread() throws InterruptedException {
+        Thread thread1 = new Thread(() -> {
+            MySun5 sun = MySun5.getSun();
+            System.out.println(sun);
+        });
+
+        Thread thread2 = new Thread(() -> {
+            MySun5 sun = MySun5.getSun();
+            System.out.println(sun);
+        });
+
+        thread1.start();
+        thread2.start();
+        // 等待子线程执行完毕
+        Thread.sleep(1000);
+    }
+
+    /**
+     * 多线程调试，各自打印的对象内存地址应该是相同的
+     */
+    @Test
+    public void testMySun6InMultiThread() throws InterruptedException {
+        Thread thread1 = new Thread(() -> {
+            MySun6 sun = MySun6.INSTANCE;
+            System.out.println(sun);
+        });
+
+        Thread thread2 = new Thread(() -> {
+            MySun6 sun = MySun6.INSTANCE;
+            System.out.println(sun);
+        });
+
+        thread1.start();
+        thread2.start();
+        // 等待子线程执行完毕
+        Thread.sleep(1000);
     }
 
 }
