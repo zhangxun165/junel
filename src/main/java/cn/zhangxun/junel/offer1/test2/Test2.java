@@ -70,4 +70,36 @@ public class Test2 {
         assertThat(Array1.isNumberExistsInArray(specificArray, targetValue)).isFalse();
     }
 
+    @Test
+    public void test7() throws Exception {
+        int[][] specificArray = new int[][]{{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22}
+                ,{10,13,14,17,24},{18,21,23,26,30}};
+        int targetValue = 15;
+        assertThat(Array1.isNumberExistsInArray(specificArray, targetValue)).isTrue();
+    }
+
+    @Test
+    public void test8() throws Exception {
+        int[][] specificArray = new int[][]{{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22}
+                ,{10,13,14,17,24},{18,21,23,26,30}};
+        int targetValue = 18;
+        assertThat(Array1.isNumberExistsInArray(specificArray, targetValue)).isTrue();
+    }
+
+    @Test
+    public void test9() throws Exception {
+        int[][] specificArray = new int[][]{{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22}
+                ,{10,13,14,17,24},{18,21,23,26,30}};
+        int targetValue = 30;
+        assertThat(Array1.isNumberExistsInArray(specificArray, targetValue)).isTrue();
+    }
+
+    @Test
+    public void test10() throws Exception {
+        int[][] specificArray = new int[][]{{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22}
+                ,{10,13,14,17,24},{18,21,23,26,30}};
+        int targetValue = 1;
+        assertThat(Array1.isNumberExistsInArray(specificArray, targetValue)).isTrue();
+    }
+
 }
